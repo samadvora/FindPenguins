@@ -48,7 +48,7 @@ $(document).ready(function () {
         timeLeft = 30; // Reset timer to 30 seconds
         $("#time").text(timeLeft); // Display the initial time
         timer = setInterval(function() {
-            timeLeft--;
+            timeLeft--; // Decrease time left by 1
             $("#time").text(timeLeft); // Update timer display
             if (timeLeft <= 0) {
                 clearInterval(timer);
