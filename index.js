@@ -45,6 +45,8 @@ $(document).ready(function () {
     }
 
     function startTimer() {
+        timeLeft = 30; // Reset timer to 30 seconds
+        $("#time").text(timeLeft); // Display the initial time
         timer = setInterval(function() {
             timeLeft--;
             $("#time").text(timeLeft); // Update timer display
@@ -58,10 +60,9 @@ $(document).ready(function () {
 
     function resetGame() {
         clearInterval(timer);
-        timeLeft = 30; // Reset timer
         c = 0; // Reset score
         $("#score").html('Score : ' + c + '<br> High Score : ' + h);
-        $("#time").text(timeLeft); // Reset timer display
+        $("#time").text(30); // Reset timer display to 30
         $(".Penguins").css('background-image', ''); // Clear images
         $(".Penguins").removeClass('yeti'); // Remove yeti class
         $("#startButton").show(); // Show start button again
