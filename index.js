@@ -21,14 +21,14 @@ $(document).ready(function () {
             var Char = num.substr(num.length - 1);
             
             if ($(this).hasClass("yeti")) {
-                $(this).css('background-image', 'url(images/yeti.png)');
+                $(this).css('background-image', 'url(images/yeti.png)'); // Show Yeti image
                 clearInterval(timer); // Stop the timer immediately
                 setTimeout(function() {
                     alert("Game Over! It's a Yeti! Your score is: " + c);
                     resetGame();
                 }, 100); // Delay alert to allow Yeti image to show
             } else {
-                $(this).css('background-image', 'url(images/penguin_' + Char + '.png)');
+                $(this).css('background-image', 'url(images/penguin_' + Char + '.png)'); // Show penguin image
                 $("#score").html('Score : ' + c + '<br> High Score : ' + h);
             }
             
