@@ -22,16 +22,18 @@ $(document).ready(function () {
             
             if ($(this).hasClass("yeti")) {
                 $(this).css('background-image', 'url(images/yeti.png)');
-                alert("Game Over! It's a Yeti!");
-                h = c;
-                $("#score").html('Score: ' + c + '<br> High Score : ' + h);
-                resetGame();
+                clearInterval(timer); // Stop the timer immediately
+                setTimeout(function() {
+                    alert("Game Over! It's a Yeti! Your score is: " + c);
+                    resetGame();
+                }, 100); // Delay alert to allow Yeti image to show
             } else {
                 $(this).css('background-image', 'url(images/penguin_' + Char + '.png)');
                 $("#score").html('Score : ' + c + '<br> High Score : ' + h);
             }
             
             if (c == 8) {
+                clearInterval(timer); // Stop the timer immediately
                 alert("Congratulations! You have won the game!");
                 resetGame();
             }
