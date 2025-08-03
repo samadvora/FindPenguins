@@ -3,19 +3,23 @@ $(document).ready(function () {
     var h = 0; // High score
     var timeLeft = 30; // Timer set to 30 seconds
     var timer; // Variable to hold the timer interval
+    var gameStarted = false; // Flag to check if the game has started
 
     $("#score").html('Score : ' + c + '<br> High Score : ' + h);
     $("#timer").hide(); // Hide timer initially
 
     $("#startButton").click(function() {
-        RandomImage();
-        $("#startButton").hide(); // Hide the start button after starting the game
-        $("#timer").show(); // Show the timer
-        startTimer(); // Start the timer
+        if (!gameStarted) { // Check if the game has not started
+            gameStarted = true; // Set the flag to true
+            RandomImage();
+            $("#startButton").hide(); // Hide the start button after starting the game
+            $("#timer").show(); // Show the timer
+            startTimer(); // Start the timer
+        }
     });
 
     $(".Penguins").on('click', function () {
-        if (timeLeft > 0) { // Only allow clicks if time is left
+        if (gameStarted && timeLeft > 0) { // Only allow clicks if the game has started and time is left
             c++;
             var num = $(this).attr('id');
             var Char = num.substr(num.length - 1);
@@ -69,5 +73,6 @@ $(document).ready(function () {
         $(".Penguins").removeClass('yeti'); // Remove yeti class
         $("#startButton").show(); // Show start button again
         $("#timer").hide(); // Hide timer
+        gameStarted = false; // Reset the game started flag
     }
 });
